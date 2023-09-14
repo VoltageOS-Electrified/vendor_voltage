@@ -134,7 +134,8 @@ PRODUCT_PACKAGES += \
 
 # Charger
 PRODUCT_PACKAGES += \
-    product_charger_res_images
+    product_charger_res_images \
+    product_charger_res_images_vendor
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
