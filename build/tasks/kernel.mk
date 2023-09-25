@@ -67,6 +67,8 @@
 #   TARGET_FORCE_PREBUILT_KERNEL       = Optional, use TARGET_PREBUILT_KERNEL even if
 #                                          kernel sources are present
 #
+#   TARGET_WITH_KERNEL_SU = Optional, if true, build kernel with KernelSU
+#
 #   TARGET_MERGE_DTBS_WILDCARD         = Optional, limits the .dtb files used to generate the
 #                                          final DTB image when using QCOM's merge_dtbs script.
 
@@ -264,6 +266,10 @@ PATH_OVERRIDE += $(TOOLS_PATH_OVERRIDE)
 
 ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
     KERNEL_MAKE_FLAGS += DTC_EXT=$(KERNEL_BUILD_OUT_PREFIX)$(DTC)
+endif
+
+ifeq ($(TARGET_WITH_KERNEL_SU),true)
+    KERNEL_MAKE_FLAGS += CONFIG_WITH_KERNEL_SU=y
 endif
 
 # Internal implementation of make-kernel-target
